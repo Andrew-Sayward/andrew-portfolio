@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     minHeight: {
-      mob: "calc(100vh - 350px)",
+      mob: "calc(100vh - 250px)",
       screen: "100vh",
     },
     extend: {

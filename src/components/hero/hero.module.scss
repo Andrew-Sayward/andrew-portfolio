@@ -4,10 +4,16 @@
 
   h1 {
     color: #323033;
+    line-height: 1;
 
     span {
       font-size: 150px;
       color: #fff;
+
+      @media (max-width: 767px) {
+        font-size: 90px;
+        line-height: 1;
+      }
     }
   }
 
