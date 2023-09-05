@@ -27,7 +27,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <TextCanvas />
-      <ThreeColumns />
+      {/* <ThreeColumns /> */}
     </main>
   );
 }

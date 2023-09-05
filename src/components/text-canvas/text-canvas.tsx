@@ -47,8 +47,8 @@ const TextCanvas = () => {
         this.force = 0;
         this.angle = 0;
         this.distance = 0;
-        this.friction = Math.random() * 0.8 + 0.15;
-        this.ease = Math.random() * 0.1 + 0.0087;
+        this.friction = Math.random() * 0.8 + 0.005;
+        this.ease = Math.random() * 0.1 + 0.00087;
       }
       draw() {
         this.effect.context.fillStyle = this.color;
@@ -96,9 +96,9 @@ const TextCanvas = () => {
         this.verticalOffset = 0;
         this.lineHeight = this.fontSize * 0.8;
         this.particles = [];
-        this.gap = 2;
+        this.gap = window.innerWidth < 767 ? 1 : 2;
         this.mouse = {
-          radius: window.innerWidth < 767 ? 2000 : 20000,
+          radius: window.innerWidth < 767 ? 2000 : 10000,
           x: 0,
           y: 0,
         };
