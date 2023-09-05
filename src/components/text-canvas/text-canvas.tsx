@@ -98,7 +98,7 @@ const TextCanvas = () => {
         this.particles = [];
         this.gap = 2;
         this.mouse = {
-          radius: 20000,
+          radius: window.innerWidth < 767 ? 2000 : 20000,
           x: 0,
           y: 0,
         };
