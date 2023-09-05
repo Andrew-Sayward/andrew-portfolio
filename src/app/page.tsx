@@ -5,7 +5,7 @@ import TextCanvas from "@/components/text-canvas/text-canvas";
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import ThreeColumns from "@/components/ThreeColumns/three-columns";
+import ThreeColumns from "@/components/three-columns/three-columns";
 
 gsap.registerPlugin(ScrollTrigger);
 

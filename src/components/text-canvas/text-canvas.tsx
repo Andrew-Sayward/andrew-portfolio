@@ -106,6 +106,18 @@ const TextCanvas = () => {
           this.mouse.x = e.x;
           this.mouse.y = e.y;
         });
+        // Handle mouse movement
+        window.addEventListener("mousemove", (e) => {
+          this.mouse.x = e.x;
+          this.mouse.y = e.y;
+        });
+
+        // Handle touch movement
+        window.addEventListener("touchmove", (e) => {
+          e.preventDefault(); // Prevent scrolling on touch
+          this.mouse.x = e.touches[0].clientX;
+          this.mouse.y = e.touches[0].clientY;
+        });
       }
       wrapText(text: any) {
         const gradient = ctx.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight);
@@ -158,6 +170,7 @@ const TextCanvas = () => {
           }
         }
       }
+
       render() {
         this.particles.forEach((particle) => {
           particle.update();
