@@ -1,4 +1,4 @@
-.threeColumns {
+.threeColumnsCaseStudy {
   .columns {
     display: flex;
     flex-direction: row;
@@ -9,37 +9,56 @@
       flex-direction: column;
     }
 
-    > div {
+    > a {
+      height: 100%;
+      width: 100%;
       flex-grow: 1;
-      font-size: 40px;
+      font-size: 50px;
       padding: 30px;
       display: flex;
       align-items: center;
-      color: #fff;
+      color: #000;
       justify-content: center;
       flex-direction: column;
+      position: relative;
 
       img {
-        margin-top: 30px;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0.4;
+      }
+
+      span {
+        position: relative;
+        z-index: 1;
       }
 
       @media (max-width: 910px) {
-        font-size: 24px;
+        font-size: 30px;
       }
 
       &.column1 {
-        background-color: #ff48ac;
+        background-color: #fff;
         width: 100vw;
+        z-index: 3;
       }
 
       &.column2 {
-        background-color: #f9cf15;
+        background-color: #fff;
         width: 100vw;
+        z-index: 2;
       }
 
       &.column3 {
-        background-color: #00deff;
+        background-color: #fff;
         width: 100vw;
+        z-index: 1;
+      }
+
+      &.column4 {
+        background-color: #fff;
+        width: 100vw;
+        z-index: 0;
       }
     }
 
@@ -47,7 +66,7 @@
       font-size: 60px;
       padding: 30px;
       width: 100%;
-      color: #fff;
+      color: #000;
       text-align: left;
       position: absolute;
       z-index: 9;
