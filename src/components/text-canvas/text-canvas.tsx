@@ -47,8 +47,8 @@ const TextCanvas = () => {
         this.force = 0;
         this.angle = 0;
         this.distance = 0;
-        this.friction = Math.random() * 0.8 + 0.005;
-        this.ease = Math.random() * 0.1 + 0.00087;
+        this.friction = Math.random() * 0.3 + 0.1;
+        this.ease = Math.random() * 0.3 + 0.1;
       }
       draw() {
         this.effect.context.fillStyle = this.color;
