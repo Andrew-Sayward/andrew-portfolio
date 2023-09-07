@@ -2,11 +2,11 @@
 
 import { MutableRefObject, useEffect, useRef } from "react";
 import styles from "./three-columns.module.scss";
-import { Bangers } from "next/font/google";
+import { Oswald } from "next/font/google";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
-const bangers = Bangers({ subsets: ["latin"], weight: "400" });
+const bangers = Oswald({ subsets: ["latin"], weight: "400" });
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
 
 const ThreeColumns = () => {

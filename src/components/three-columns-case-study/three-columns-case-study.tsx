@@ -2,7 +2,7 @@
 
 import { MutableRefObject, useEffect, useRef } from "react";
 import styles from "./three-columns-case-study.module.scss";
-import { Bangers } from "next/font/google";
+import { Oswald } from "next/font/google";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";

@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import styles from "./text-canvas.module.scss";
-import { Bangers } from "next/font/google";
+import { Oswald } from "next/font/google";
 
-const bangers = Bangers({ subsets: ["latin"], weight: "400" });
+const bangers = Oswald({ subsets: ["latin"], weight: "400" });
 
 const TextCanvas = () => {
   useEffect(() => {
@@ -121,9 +121,9 @@ const TextCanvas = () => {
       }
       wrapText(text: any) {
         const gradient = ctx.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeight);
-        gradient.addColorStop(0.3, "red");
-        gradient.addColorStop(0.5, "orange");
-        gradient.addColorStop(0.7, "yellow");
+        gradient.addColorStop(0.3, "#227C9D");
+        gradient.addColorStop(0.5, "#17C3B2");
+        gradient.addColorStop(0.7, "#FFCB77");
         this.context.fillStyle = gradient;
         this.context.textAlign = "center";
         this.context.textBaseline = "middle";

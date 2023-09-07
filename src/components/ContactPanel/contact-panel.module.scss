@@ -1,21 +1,17 @@
 .contactPanel {
   min-height: 100vh;
-  background-color: #ff48ac;
+  background-color: #227c9d;
   z-index: 919;
   position: relative;
 
   h2 {
     font-size: 80px;
     color: #fff;
+    margin-bottom: 30px;
   }
 
   span {
-    position: absolute;
-    top: 100px;
-    left: 50px;
     color: #fff;
-    font-size: 40px;
-    transform-origin: center;
-    transform: rotate(-20deg);
+    font-size: 26px;
   }
 }

@@ -1,7 +1,7 @@
 import "./globals.scss";
-import { Bangers } from "next/font/google";
+import { Oswald } from "next/font/google";
 
-const bangers = Bangers({ subsets: ["latin"], weight: "400" });
+const bangers = Oswald({ subsets: ["latin"], weight: "400" });
 
 export const metadata = {
   title: "Create Next App",

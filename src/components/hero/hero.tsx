@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className="container mx-auto lg:flex h-full items-center relative min-h-screen">
-        <div className="py-10 lg:py-0 absolute lg:relative z-10 w-full lg:w-6/12" style={{ background: "#f9cf15;" }}>
+        <div className="py-10 lg:py-0 absolute lg:relative z-10 w-full lg:w-6/12" style={{ background: "#ffcb77;" }}>
           <h1 className="font-bold text-3xl lg:text-6xl w-full">
             Hi!
             <br />
