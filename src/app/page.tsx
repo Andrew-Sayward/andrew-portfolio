@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import ThreeColumns from "@/components/three-columns/three-columns";
 import ThreeColumnsCaseStudy from "@/components/three-columns-case-study/three-columns-case-study";
+import ContactPanel from "@/components/ContactPanel/contact-panel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +36,7 @@ export default function Home() {
         // Add an animation to the timeline
         timeline.to(".fixed-left", {
           x: "-100%",
+          y: 0, // Keep the y position at 0
           duration: 1, // Adjust the duration as needed
         });
       }
@@ -47,7 +49,7 @@ export default function Home() {
       <TextCanvas />
       <ThreeColumns />
       <ThreeColumnsCaseStudy />
-      {/* <section className="min-h-screen"></section> */}
+      <ContactPanel />
     </main>
   );
 }

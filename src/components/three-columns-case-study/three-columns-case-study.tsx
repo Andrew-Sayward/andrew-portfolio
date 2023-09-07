@@ -7,20 +7,20 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import Link from "next/link";
-const bangers = Bangers({ subsets: ["latin"], weight: "400" });
 gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
 
 const ThreeColumnsCaseStudy = () => {
   const containerRef = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
+  const secondContainerRef = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
   const tl = useRef<gsap.core.Timeline>();
 
   useEffect(() => {
     const container = containerRef.current;
-
+    const secondContainer = secondContainerRef.current;
     let ctx = gsap.context(() => {
       tl.current = gsap.timeline({
         scrollTrigger: {
-          trigger: container,
+          trigger: secondContainer,
           scrub: true,
           start: "top bottom",
           end: "bottom bottom",
@@ -62,8 +62,9 @@ const ThreeColumnsCaseStudy = () => {
   }, []);
 
   return (
-    <section className={`${styles.threeColumnsCaseStudy} min-h-screen overflow-hidden`} ref={containerRef}>
-      <div className={`${styles.columns} fixed-left`}>
+    <>
+      <section className={`${styles.threeColumnsCaseStudy} min-h-screen overflow-hidden`} ref={secondContainerRef}></section>
+      <div className={`${styles.columns} fixed-left`} ref={containerRef}>
         <h2>On work like</h2>
         <Link href={"https://culture.on-running.com/"} target="_blank" className={`column-item ${styles.column1}`}>
           <div>
@@ -84,7 +85,7 @@ const ThreeColumnsCaseStudy = () => {
           <Image alt="react logo" src="/depop.webp" fill />
         </Link>
       </div>
-    </section>
+    </>
   );
 };
 
