@@ -66,23 +66,32 @@ const ThreeColumnsCaseStudy = () => {
       <section className={`${styles.threeColumnsCaseStudy} min-h-screen overflow-hidden`} ref={secondContainerRef}></section>
       <div className={`${styles.columns} fixed-left`} ref={containerRef}>
         <h2>On work like</h2>
+        <Link href={"https://careers.sky.com/"} target="_blank" className={`column-item ${styles.column3}`}>
+          <div>
+            <span>Sky</span>
+          </div>
+          <Image
+            alt="react logo"
+            src="https://careers.sky.com/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F104939%2F1701860345-1a_home_header.jpg&w=3840&q=75"
+            fill
+            objectPosition="left"
+          />
+        </Link>
         <Link href={"https://culture.on-running.com/"} target="_blank" className={`column-item ${styles.column1}`}>
           <div>
             <span>Onrunning</span>
           </div>
-          <Image alt="react logo" src="/onrunning.jpeg" fill />
+          <Image
+            alt="react logo"
+            src="https://www.highsnobiety.com/static-assets/dato/1682678296-on-running-lyst-hottest-mens-items-main.jpg"
+            fill
+          />
         </Link>
         <Link href={"https://www.williamhillgroup.com/careers"} target="_blank" className={`column-item ${styles.column2}`}>
           <div>
             <span> William Hill</span>
           </div>
           <Image alt="react logo" src="/william-hill.jpeg" fill />
-        </Link>
-        <Link href={"https://depopcareers.com/"} target="_blank" className={`column-item ${styles.column3}`}>
-          <div>
-            <span>Depop</span>
-          </div>
-          <Image alt="react logo" src="/depop.webp" fill />
         </Link>
       </div>
     </>
