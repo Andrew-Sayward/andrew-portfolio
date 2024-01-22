@@ -66,7 +66,7 @@ const ThreeColumnsCaseStudy = () => {
       <section className={`${styles.threeColumnsCaseStudy} min-h-screen overflow-hidden`} ref={secondContainerRef}></section>
       <div className={`${styles.columns} fixed-left`} ref={containerRef}>
         <h2>On work like</h2>
-        <Link href={"https://careers.sky.com/"} target="_blank" className={`column-item ${styles.column3}`}>
+        <Link href={"https://careers.sky.com/"} target="_blank" className={`column-item ${styles.column1}`}>
           <div>
             <span>Sky</span>
           </div>
@@ -77,7 +77,7 @@ const ThreeColumnsCaseStudy = () => {
             objectPosition="left"
           />
         </Link>
-        <Link href={"https://culture.on-running.com/"} target="_blank" className={`column-item ${styles.column1}`}>
+        <Link href={"https://culture.on-running.com/"} target="_blank" className={`column-item ${styles.column2}`}>
           <div>
             <span>Onrunning</span>
           </div>
@@ -87,7 +87,7 @@ const ThreeColumnsCaseStudy = () => {
             fill
           />
         </Link>
-        <Link href={"https://www.williamhillgroup.com/careers"} target="_blank" className={`column-item ${styles.column2}`}>
+        <Link href={"https://www.williamhillgroup.com/careers"} target="_blank" className={`column-item ${styles.column3}`}>
           <div>
             <span> William Hill</span>
           </div>
