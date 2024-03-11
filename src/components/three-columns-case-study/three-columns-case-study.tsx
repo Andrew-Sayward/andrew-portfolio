@@ -66,7 +66,13 @@ const ThreeColumnsCaseStudy = () => {
       <section className={`${styles.threeColumnsCaseStudy} min-h-screen overflow-hidden`} ref={secondContainerRef}></section>
       <div className={`${styles.columns} fixed-left`} ref={containerRef}>
         <h2>On work like</h2>
-        <Link href={"https://careers.sky.com/"} target="_blank" className={`column-item ${styles.column1}`}>
+        <Link href={"https://careers.sohohouse.com/"} target="_blank" className={`column-item ${styles.column1}`}>
+          <div>
+            <span>Soho House</span>
+          </div>
+          <Image alt="react logo" src="/soho-house.jpeg" fill />
+        </Link>
+        <Link href={"https://careers.sky.com/"} target="_blank" className={`column-item ${styles.column2}`}>
           <div>
             <span>Sky</span>
           </div>
@@ -77,21 +83,11 @@ const ThreeColumnsCaseStudy = () => {
             objectPosition="left"
           />
         </Link>
-        <Link href={"https://culture.on-running.com/"} target="_blank" className={`column-item ${styles.column2}`}>
+        <Link href={"https://culture.on-running.com/"} target="_blank" className={`column-item ${styles.column3}`}>
           <div>
             <span>Onrunning</span>
           </div>
-          <Image
-            alt="react logo"
-            src="https://www.highsnobiety.com/static-assets/dato/1682678296-on-running-lyst-hottest-mens-items-main.jpg"
-            fill
-          />
-        </Link>
-        <Link href={"https://www.williamhillgroup.com/careers"} target="_blank" className={`column-item ${styles.column3}`}>
-          <div>
-            <span> William Hill</span>
-          </div>
-          <Image alt="react logo" src="/william-hill.jpeg" fill />
+          <Image alt="react logo" src="/on-running.jpeg" fill />
         </Link>
       </div>
     </>
