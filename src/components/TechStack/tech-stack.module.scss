@@ -10,6 +10,10 @@
 
     > div {
       grid-column: 2 / span 10;
+
+      @media (max-width: 767px) {
+        grid-column: 1 / span 12;
+      }
       h2 {
         margin-bottom: 24px;
       }
@@ -27,6 +31,10 @@
         flex-basis: calc(100% / 4);
         color: black;
         text-align: center;
+
+        @media (max-width: 767px) {
+          flex-basis: calc(100% / 3);
+        }
 
         .logo {
           position: relative;

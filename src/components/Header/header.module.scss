@@ -8,8 +8,17 @@
   color: white;
   padding: 16px 0;
   mix-blend-mode: difference;
-  z-index: 99;
-  pointer-events: none;
+  z-index: 998;
+  transition: all 0.4s ease;
+
+  &.mobileHeader {
+    @media (max-width: 767px) {
+      background-color: white;
+      mix-blend-mode: unset;
+      color: black;
+      box-shadow: 0px 0px 2px 0px #000;
+    }
+  }
 }
 
 .inner {
@@ -19,6 +28,7 @@
 .logoOutter {
   display: flex;
   align-items: center;
+  pointer-events: all;
 
   span {
     display: block;

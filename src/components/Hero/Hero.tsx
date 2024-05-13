@@ -7,24 +7,25 @@ type Props = {
 };
 
 const Hero = ({ hasScrolled }: Props) => {
-  const buttons = ["About", "Tech Stack"];
+  const buttons = ["About", "Tech Stack", "Portfolio"];
   const renderButtons = () => {
     return buttons?.map((item, index) => {
       return (
-        <motion.button
-          className={styles.button}
-          key={index}
-          layoutId={item.replace(" ", "")}
-          transition={{ type: "", damping: 50, stiffness: 150 }}
-        >
-          {item}
-        </motion.button>
+        <a href={"#" + item.toLowerCase().replace(" ", "")} key={index}>
+          <motion.button
+            className={styles.button}
+            layoutId={item.replace(" ", "")}
+            transition={{ type: "", damping: 50, stiffness: 150 }}
+          >
+            {item}
+          </motion.button>
+        </a>
       );
     });
   };
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id="home">
       <div className={styles.inner}>
         {!hasScrolled && <motion.h1 layoutId="andrew-h1">Andrew Sayward</motion.h1>}
         <p>Senior FrontEnd Web Developer</p>

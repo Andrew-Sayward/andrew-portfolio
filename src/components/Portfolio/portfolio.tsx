@@ -24,7 +24,7 @@ const Portfolio = () => {
     },
     {
       name: "OnRunning",
-      image: "onrunning.webp",
+      image: "onrunning.jpeg",
       copy: "OnRunning marked my initial foray into building a large-scale website. The site features dynamic job description pages that integrate data from multiple CMS and data fields. These pages are tailored to each job, displaying detailed information about location, team involvement, and other job-specific details, creating a comprehensive and relevant user experience.",
       link: "https://culture.onrunning.com",
     },
@@ -33,7 +33,7 @@ const Portfolio = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className={styles.portfolio}>
+    <section className={styles.portfolio} id="portfolio">
       <div className={styles.inner}>
         <div>
           <h2>Portfolio</h2>
@@ -62,7 +62,9 @@ const Portfolio = () => {
             </div>
             <div className={styles.contentSection}>
               <div>{portfolio[activeIndex].copy}</div>
-              <a href={portfolio[activeIndex].link}>See website</a>
+              <a href={portfolio[activeIndex].link} target="_blank">
+                See website
+              </a>
             </div>
           </div>
         </div>

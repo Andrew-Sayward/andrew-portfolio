@@ -12,7 +12,7 @@ const TechStack = () => {
   ];
 
   return (
-    <section className={styles.techStack}>
+    <section className={styles.techStack} id="techstack">
       <div className={styles.inner}>
         <div>
           <h2>Tech Stack</h2>

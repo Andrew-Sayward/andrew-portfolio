@@ -1,0 +1,43 @@
+@import "@/styles/mixins";
+
+.inner {
+  @include container;
+
+  > div {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    grid-column: 2 / span 10;
+
+    @media (max-width: 767px) {
+      grid-column: 1 / span 12;
+    }
+  }
+}
+
+.footer {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-top: 1px solid black;
+
+  h3 {
+    font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    > a {
+      display: block;
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }
+    img {
+      object-fit: contain;
+    }
+  }
+}

@@ -8,11 +8,16 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
 
   &.disable-scroll {
     position: fixed;
@@ -44,4 +49,6 @@ a {
 
 h2 {
   font-size: 32px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
