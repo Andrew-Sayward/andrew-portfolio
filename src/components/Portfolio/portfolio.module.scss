@@ -55,6 +55,13 @@
         position: relative;
         height: 600px;
 
+        @media (max-width: 767px) {
+          font-size: 48px;
+          max-width: 100%;
+          display: none;
+          height: unset;
+        }
+
         img {
           object-fit: cover;
           object-position: top;
@@ -68,6 +75,12 @@
         background-color: white;
         width: 80%;
         padding: 24px;
+
+        @media (max-width: 767px) {
+          position: relative;
+          padding: 0;
+          width: 100%;
+        }
 
         a {
           padding: 8px 24px;
