@@ -1,0 +1,39 @@
+@import "@/styles/mixins";
+
+.header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  color: white;
+  padding: 16px 0;
+  mix-blend-mode: difference;
+  z-index: 99;
+  pointer-events: none;
+}
+
+.inner {
+  @include container;
+}
+
+.logoOutter {
+  display: flex;
+  align-items: center;
+
+  span {
+    display: block;
+  }
+
+  .name {
+    line-height: 1;
+    margin-left: 8px;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: 16px;
+  }
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}

@@ -1,0 +1,30 @@
+@import "@/styles/mixins";
+
+.about {
+  background-color: white;
+  color: black;
+
+  .inner {
+    @include container;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+  }
+
+  .image {
+    grid-column: 2 / span 4;
+    position: relative;
+    height: 100%;
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    grid-column: 7 / span 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
