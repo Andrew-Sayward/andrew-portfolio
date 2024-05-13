@@ -1,0 +1,9 @@
+@mixin container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 10px;
+  margin: auto;
+}

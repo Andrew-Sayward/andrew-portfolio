@@ -1,0 +1,90 @@
+@import "@/styles/mixins";
+
+.portfolio {
+  background-color: white;
+  color: black;
+
+  .inner {
+    @include container;
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    > div {
+      grid-column: 2 / span 10;
+
+      @media (max-width: 767px) {
+        grid-column: 1 / span 12;
+      }
+
+      > h2 {
+        margin-bottom: 8px;
+      }
+      > p {
+        margin-bottom: 24px;
+      }
+    }
+
+    .portfolioCards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .card {
+        padding: 16px;
+        background-color: grey;
+        flex-grow: 1;
+        flex-basis: calc(100% / 5);
+        color: white;
+        text-align: center;
+
+        @media (max-width: 767px) {
+          flex-basis: calc(100% / 3);
+        }
+
+        &.active {
+          background-color: black;
+        }
+      }
+    }
+
+    .contentArea {
+      margin-top: 24px;
+      grid-column: 1 / -1;
+      position: relative;
+      .image {
+        position: relative;
+        height: 600px;
+
+        img {
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+
+      .contentSection {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: white;
+        width: 80%;
+        padding: 24px;
+
+        a {
+          padding: 8px 24px;
+          background-color: black;
+          color: white;
+          border-radius: 50px;
+          margin-top: 24px;
+          display: inline-block;
+          border: 1px solid black;
+          transition: all 0.4s ease;
+
+          &:hover {
+            background-color: white;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

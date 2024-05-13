@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background: white;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+  scroll-behavior: smooth;
+
+  &.disable-scroll {
+    position: fixed;
+    overflow: hidden;
+  }
+}
+
+#__next {
+  overflow-x: clip;
+}
+
+input {
+  background-color: transparent;
+  border-radius: 0px;
+}
+
+input:-internal-autofill-selected {
+  background-color: transparent;
+  background: transparent;
+}
+
+a {
+  cursor: pointer;
+}
+
+.divider {
+  margin: 0 8px;
+}
+
+h2 {
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
