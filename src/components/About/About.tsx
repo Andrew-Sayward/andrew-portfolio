@@ -1,12 +1,43 @@
+import { useEffect, useRef } from "react";
 import styles from "./about.module.scss";
 import Image from "next/image";
 
 const About = () => {
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth > 991) {
+        const aboutTop = aboutRef.current ? aboutRef.current.offsetTop : 0;
+        let windowTop = window.scrollY;
+        let relativeTop = windowTop - aboutTop;
+
+        window.requestAnimationFrame(() => {
+          if (backgroundRef.current) {
+            backgroundRef.current.style.transform = `translateY(${relativeTop / 4}px)`;
+          }
+        });
+      }
+    };
+
+    if (window.innerWidth > 991) {
+      document.addEventListener("scroll", handleScroll);
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <section className={styles.about} id="about">
+    <section ref={aboutRef} className={styles.about} id="about">
       <div className={styles.inner}>
         <div className={styles.image}>
-          <Image src="/andrew.jpeg" alt="image of Andrew Sayward" fill />
+          <div ref={backgroundRef}>
+            <Image src="/andrew.jpeg" alt="image of Andrew Sayward" fill />
+          </div>
         </div>
         <div className={styles.content}>
           <p>
