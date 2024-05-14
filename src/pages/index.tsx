@@ -6,10 +6,17 @@ import About from "@/components/About/About";
 import Header from "@/components/Header/header";
 import TechStack from "@/components/TechStack/tech-stack";
 import Portfolio from "@/components/Portfolio/portfolio";
+import { readAllBlogs } from "@/helpers/data/read-all-blogs";
+import { BlogPostData } from "@/helpers/data/read-blog-post-page";
+import BlogListingSmall from "@/components/BlogListingSmall/blog-listing-small";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home() {
+type Props = {
+  blogs: BlogPostData[];
+};
+
+export default function Home(props: Props) {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -33,6 +40,17 @@ export default function Home() {
       <About />
       <TechStack />
       <Portfolio />
+      <BlogListingSmall blogs={props.blogs} />
     </main>
   );
+}
+
+export async function getStaticProps(context: any): Promise<{ props: Props }> {
+  const [blogs] = await Promise.all([readAllBlogs()]);
+
+  return {
+    props: {
+      blogs,
+    },
+  };
 }

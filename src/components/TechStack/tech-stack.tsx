@@ -26,7 +26,7 @@ const TechStack = () => {
     if (element) {
       ScrollTrigger.create({
         trigger: element,
-        start: "top center", // Start checking when the top of the trigger hits the top of the viewport
+        start: "top 30%", // Start checking when the top of the trigger hits the top of the viewport
         end: "top top", // End checking when the bottom of the trigger hits the bottom of the viewport
         onLeave: () => setHasScrolled(true), // Set hasScrolled to true when scrolling back up
         onEnter: () => setHasScrolled(true), // Also set it to true when scrolling down
@@ -49,6 +49,13 @@ const TechStack = () => {
     { name: "GSAP", logo: "/greensock.svg" },
   ];
 
+  // Define the spring transition
+  const spring = {
+    type: "spring",
+    stiffness: 700,
+    damping: 30,
+  };
+
   return (
     <section ref={sectionRef} className={styles.techStack} id="techstack" style={{ height: isMobile ? "auto" : "600px" }}>
       <div className={styles.inner}>
@@ -58,7 +65,13 @@ const TechStack = () => {
             <div className={`${styles.techCards} ${styles.techCardsStacked}`}>
               {stack.map((item, index) => {
                 return (
-                  <motion.div layoutId={item.name} key={index} className={styles.card} style={{ top: index * 40 }}>
+                  <motion.div
+                    layoutId={item.name}
+                    key={index}
+                    className={styles.card}
+                    style={{ top: index * 40 }}
+                    transition={spring}
+                  >
                     <div className={styles.logo}>
                       <Image src={item.logo} alt={item.name} fill />
                     </div>
@@ -74,7 +87,7 @@ const TechStack = () => {
             <div className={styles.techCards}>
               {stack.map((item, index) => {
                 return (
-                  <motion.div key={index} className={styles.card} layoutId={item.name}>
+                  <motion.div key={index} className={styles.card} layoutId={item.name} transition={spring}>
                     <div className={styles.logo}>
                       <Image src={item.logo} alt={item.name} fill />
                     </div>
