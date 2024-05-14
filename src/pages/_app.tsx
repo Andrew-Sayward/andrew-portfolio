@@ -1,7 +1,6 @@
 import Head from "next/head";
 import "../styles/global.scss";
 import Footer from "@/components/Footer/footer";
-import PinnerContainer from "@/atoms/pinner-container/pinner-container";
 import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps, router }: any) {
