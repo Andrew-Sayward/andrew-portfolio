@@ -3,6 +3,9 @@
 .techStack {
   background-color: black;
   color: white;
+  position: relative;
+  z-index: 2;
+
   .inner {
     @include container;
     padding-top: 80px;

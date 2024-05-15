@@ -3,6 +3,8 @@
 .about {
   background-color: #ffffff;
   color: black;
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 767px) {
     background-color: transparent;
