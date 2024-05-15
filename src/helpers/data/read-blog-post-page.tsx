@@ -37,9 +37,13 @@ const blogPostQuery = (slug: string) => gql`
           value
           links
           blocks {
-            image {
-              alt
-              url
+            __typename
+            id
+            ... on ImageBlockRecord {
+              image {
+                url
+                alt
+              }
             }
           }
         }

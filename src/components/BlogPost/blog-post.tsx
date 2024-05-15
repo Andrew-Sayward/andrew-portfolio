@@ -4,11 +4,11 @@ import { StructuredText } from "react-datocms/structured-text";
 import { render as toPlainText } from "datocms-structured-text-to-plain-text";
 import { renderNodeRule } from "datocms-structured-text-to-plain-text";
 import { isHeading, isParagraph, isBlockquote } from "datocms-structured-text-utils";
-import BlogImage from "../Blog/blog-image/blog-image";
 import BodyText from "../Blog/body-text/body-text";
 import PullQuote from "../Blog/pull-quote/pull-quote";
 import Subheading from "../Blog/subheading/subheading";
 import Image from "next/image";
+import BlogImage from "../Blog/blog-image/blog-image";
 
 type Props = {
   page: BlogPostData;
@@ -48,10 +48,17 @@ const BlogPost = ({ page }: Props) => {
                   return <BodyText key={key}>{renderNode("p", { key }, children)}</BodyText>;
                 }),
               ]}
-              renderBlock={({ record }) => {
-                switch (record.__typename) {
-                  case "FileField":
-                    return <BlogImage image={record.image as any} />;
+              renderBlock={({ record }: any) => {
+                switch (record._typename) {
+                  case "ImageBlockRecord":
+                    return (
+                      <BlogImage
+                        image={{
+                          url: record.image.url,
+                          alt: record.image.alt,
+                        }}
+                      />
+                    );
                   default:
                     return null;
                 }
