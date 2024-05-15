@@ -58,32 +58,30 @@ const Hero = ({ hasScrolled }: Props) => {
 
   return (
     <>
-      <div>
-        <section className={styles.hero} id="home" ref={sectionRef}>
-          <div className={styles.inner}>
-            {!hasScrolled && (
-              <motion.h1 transition={spring} layoutId="andrew-h1">
-                Andrew Sayward
-              </motion.h1>
-            )}
-            {!hasScrolled && <p>Senior FrontEnd Web Developer</p>}
-            {!hasScrolled && <div className={styles.buttons}>{renderButtons()}</div>}
-          </div>
-          <div className={styles.video}>
-            <VideoEmbed
-              quality="720p"
-              src={"https://vimeo.com/409250080"}
-              loop
-              autoplay
-              muted
-              background
-              fill
-              width={100}
-              height={100}
-            />
-          </div>
-        </section>
-      </div>
+      <section className={styles.hero} id="home" ref={sectionRef}>
+        <div className={styles.inner}>
+          {!hasScrolled && (
+            <motion.h1 transition={spring} layoutId="andrew-h1">
+              Andrew Sayward
+            </motion.h1>
+          )}
+          {!hasScrolled && <p>Senior FrontEnd Web Developer</p>}
+          {!hasScrolled && <div className={styles.buttons}>{renderButtons()}</div>}
+        </div>
+        <div className={styles.video}>
+          <VideoEmbed
+            quality="240p"
+            src={"https://vimeo.com/409250080"}
+            loop
+            autoplay
+            muted
+            background
+            fill
+            width={100}
+            height={100}
+          />
+        </div>
+      </section>
       {hasScrolled && <div className={styles.floatingButtons}>{renderButtons()}</div>}
     </>
   );
