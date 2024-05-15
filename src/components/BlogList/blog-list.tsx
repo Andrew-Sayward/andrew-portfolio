@@ -16,6 +16,7 @@ const BlogList = ({ blogs }: Props) => {
       <div className={styles.header}>
         <div className={styles.inner}>
           <h1>Blog</h1>
+          <p>A collection of articles around my life and experiences</p>
         </div>
       </div>
       <div className={styles.inner}>
