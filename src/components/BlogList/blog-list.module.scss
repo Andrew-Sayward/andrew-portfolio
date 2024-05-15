@@ -14,15 +14,18 @@
 .header {
   background-color: black;
   color: white;
-  padding-top: 80px;
-  padding-bottom: 80px;
 
-  h1 {
+  h1,
+  p {
     grid-column: 2 / span 10;
 
     @media (max-width: 767px) {
       grid-column: 1 / span 12;
     }
+  }
+
+  p {
+    margin-top: 24px;
   }
 }
 
