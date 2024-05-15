@@ -1,4 +1,5 @@
 import BlogList from "@/components/BlogList/blog-list";
+import Header from "@/components/Header/header";
 import { readAllBlogs } from "@/helpers/data/read-all-blogs";
 import { readBlogListing } from "@/helpers/data/read-blog-listing";
 
@@ -8,7 +9,12 @@ type Props = {
 };
 
 const BlogListing = (props: Props) => {
-  return <BlogList blogs={props.blogs}></BlogList>;
+  return (
+    <>
+      <Header hasScrolled={false} />
+      <BlogList blogs={props.blogs}></BlogList>
+    </>
+  );
 };
 export default BlogListing;
 

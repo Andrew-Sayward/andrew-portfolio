@@ -26,6 +26,8 @@ const About = () => {
       // Adjust these values based on the desired effect
       tl.to(backgroundRef.current, {
         yPercent: 20, // Vertical movement percentage
+        // xPercent: 10, // Vertical movement percentage
+
         ease: "none",
       });
     }

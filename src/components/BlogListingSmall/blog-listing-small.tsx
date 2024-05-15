@@ -9,8 +9,9 @@ type Props = {
 
 const BlogListingSmall = ({ blogs }: Props) => {
   return (
-    <section className={styles.blogListingSmall}>
+    <section className={styles.blogListingSmall} id="blog">
       <div className={styles.inner}>
+        <h2>Blog</h2>
         <div className={styles.blogCards}>
           {blogs.slice(0, 3).map((item, index) => {
             return (
@@ -26,9 +27,9 @@ const BlogListingSmall = ({ blogs }: Props) => {
           })}
         </div>
         <div className={styles.link}>
-          <a className={styles.view} href="/blogs/">
+          <Link className={styles.view} href="/blog/">
             View all blogs
-          </a>
+          </Link>
         </div>
       </div>
     </section>

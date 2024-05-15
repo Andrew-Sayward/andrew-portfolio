@@ -8,6 +8,10 @@ function MyApp({ Component, pageProps, router }: any) {
     <>
       <Head>
         <link rel="icon" href="/favicon.png" />
+        <link rel="dns-prefetch" href="https://f.vimeocdn.com" />
+        <link rel="dns-prefetch" href="https://player.vimeo.com" />
+        <link rel="dns-prefetch" href="https://i.vimeocdn.com" />
+        <link rel="dns-prefetch" href="https://player.vimeo.com" />
       </Head>
       <AnimatePresence>
         <Component {...pageProps} />

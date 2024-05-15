@@ -1,16 +1,50 @@
 import { BlogCardData } from "@/helpers/models/blog-card-data";
 import styles from "./blog-list.module.scss";
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 
 type Props = {
   blogs: BlogCardData[];
 };
 
 const BlogList = ({ blogs }: Props) => {
+  const [loadSize, setLoadSize] = useState(6);
+
   return (
-    <section>
-      {blogs.map((item, index) => {
-        return item.slug;
-      })}
+    <section className={styles.blogList}>
+      <div className={styles.header}>
+        <div className={styles.inner}>
+          <h1>Blog</h1>
+        </div>
+      </div>
+      <div className={styles.inner}>
+        <div className={styles.blogCards}>
+          {blogs.slice(0, loadSize).map((item, index) => {
+            return (
+              <Link href={"/blog/" + item.slug} key={index}>
+                <div className={styles.blogCard}>
+                  <div className={styles.image}>
+                    <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />
+                  </div>
+                  <h3>{item.title}</h3>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+      {blogs.length > loadSize && (
+        <div className={styles.loadMoreSection}>
+          <button
+            onClick={() => {
+              setLoadSize(loadSize + 6);
+            }}
+          >
+            Load More
+          </button>
+        </div>
+      )}
     </section>
   );
 };

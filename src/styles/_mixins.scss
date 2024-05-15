@@ -7,3 +7,39 @@
   column-gap: 10px;
   margin: auto;
 }
+
+@mixin blogCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  justify-content: space-between;
+  grid-column: 2 / span 10;
+
+  .blogCard {
+    flex-basis: calc(100% / 3 - 16px);
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    box-shadow: 2px 2px 4px -1px #a5a5a9;
+
+    .image {
+      width: 100%;
+      aspect-ratio: 1;
+      position: relative;
+      flex-grow: 1;
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 1;
+      padding: 40px 24px;
+    }
+  }
+}

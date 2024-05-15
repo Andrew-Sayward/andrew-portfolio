@@ -10,7 +10,7 @@ const Header = ({ hasScrolled }: Props) => {
   return (
     <header className={`${styles.header} ${hasScrolled ? styles.mobileHeader : ""}`}>
       <div className={styles.inner}>
-        <Link href="#home">
+        <Link href="/">
           <div className={styles.logoOutter}>
             <span className={styles.logo}>:{"}"}</span>
             {hasScrolled && (

@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./portfolio.module.scss";
 import Image from "next/image";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const Portfolio = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const portfolioRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
   const portfolio = [
     {
       name: "Wiser",
@@ -32,8 +38,38 @@ const Portfolio = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    // Registers the plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Ensure the refs are correctly set
+    if (backgroundRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: portfolioRef.current,
+          start: "top bottom", // When the top of 'aboutRef' hits the bottom of the viewport
+          end: "bottom top", // When the bottom of 'aboutRef' leaves the top of the viewport
+          scrub: true, // Smooth scrubbing
+        },
+      });
+
+      // Adjust these values based on the desired effect
+      tl.to(backgroundRef.current, {
+        yPercent: 10, // Vertical movement percentage
+        xPercent: 10, // Vertical movement percentage
+
+        ease: "none",
+      });
+    }
+
+    // Cleanup function to kill ScrollTriggers on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section className={styles.portfolio} id="portfolio">
+    <section className={styles.portfolio} id="portfolio" ref={portfolioRef}>
       <div className={styles.inner}>
         <div>
           <h2>Portfolio</h2>
@@ -58,7 +94,9 @@ const Portfolio = () => {
           </div>
           <div className={styles.contentArea}>
             <div className={styles.image}>
-              <Image src={portfolio[activeIndex].image} alt="" fill />
+              <div ref={backgroundRef}>
+                <Image src={portfolio[activeIndex].image} alt="" fill />
+              </div>
             </div>
             <div className={styles.contentSection}>
               <div>{portfolio[activeIndex].copy}</div>
