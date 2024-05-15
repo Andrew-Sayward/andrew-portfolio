@@ -1,23 +1,57 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 /**
- * Modified from link below
- * @see https://observablehq.com/@werehamster/avoiding-hydration-mismatch-when-using-react-hooks
- * @param mediaQueryString
- * @returns {unknown}
+ * A hook that checks if the window width is below a specified breakpoint.
+ * @param breakpoint The breakpoint (in pixels) to compare the window width against.
+ * @returns True if the window width is below the breakpoint, false otherwise.
  */
-export default function useMediaQuery(mediaQueryString: string) {
+
+export function useMediaQuery(mediaQueryString: string) {
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia(mediaQueryString);
-    const listener = () => setMatches(!!mediaQueryList.matches);
-    listener();
-    mediaQueryList.addListener(listener);
-    return () => mediaQueryList.removeListener(listener);
+    // Ensure window and matchMedia are available to avoid SSR issues
+    if (typeof window !== "undefined" && window.matchMedia) {
+      const mediaQueryList = window.matchMedia(mediaQueryString);
+      const updateMatches = ({ matches }: MediaQueryListEvent) => {
+        setMatches(matches);
+      };
+
+      // Set initial state based on the media query
+      setMatches(mediaQueryList.matches);
+
+      // Listen for changes in the media query
+      mediaQueryList.addEventListener("change", updateMatches);
+
+      // Clean up by removing the event listener
+      return () => mediaQueryList.removeEventListener("change", updateMatches);
+    }
   }, [mediaQueryString]);
 
   return matches;
 }
+
+function useWindowWidthBelowBreakpoint(breakpoint: number): boolean {
+  const [isBelowBreakpoint, setIsBelowBreakpoint] = useState(false);
+
+  useEffect(() => {
+    // Handler to call on window resize
+    function checkWindowSize() {
+      // Check if the window width is below the breakpoint and update state
+      setIsBelowBreakpoint(window.innerWidth < breakpoint);
+    }
+
+    // Add resize event listener
+    window.addEventListener("resize", checkWindowSize);
+
+    // Check initial window size
+    checkWindowSize();
+
+    // Cleanup function to remove event listener
+    return () => window.removeEventListener("resize", checkWindowSize);
+  }, [breakpoint]); // Dependency on breakpoint ensures that the effect updates if the breakpoint changes
+
+  return isBelowBreakpoint;
+}
+
+export default useWindowWidthBelowBreakpoint;

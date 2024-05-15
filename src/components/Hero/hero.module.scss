@@ -28,15 +28,10 @@
   }
 
   h1 {
-    font-weight: bold;
-    font-size: 96px;
-    text-transform: uppercase;
     max-width: 50%;
     text-align: center;
-    line-height: 1;
 
     @media (max-width: 767px) {
-      font-size: 48px;
       max-width: 100%;
     }
   }
@@ -58,7 +53,7 @@
     width: 100vw;
     height: 100vh;
     z-index: -1;
-
+    background-color: black;
     @media (max-width: 767px) {
       display: none !important;
     }

@@ -47,6 +47,19 @@ a {
   margin: 0 8px;
 }
 
+h1 {
+  font-weight: bold;
+  font-size: 96px;
+  text-transform: uppercase;
+
+  line-height: 1;
+
+  @media (max-width: 767px) {
+    font-size: 48px;
+    max-width: 100%;
+  }
+}
+
 h2 {
   font-size: 32px;
   text-transform: uppercase;

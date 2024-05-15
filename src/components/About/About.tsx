@@ -1,12 +1,50 @@
+import { useEffect, useRef } from "react";
 import styles from "./about.module.scss";
 import Image from "next/image";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const About = () => {
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Registers the plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Ensure the refs are correctly set
+    if (backgroundRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top bottom", // When the top of 'aboutRef' hits the bottom of the viewport
+          end: "bottom top", // When the bottom of 'aboutRef' leaves the top of the viewport
+          scrub: true, // Smooth scrubbing
+        },
+      });
+
+      // Adjust these values based on the desired effect
+      tl.to(backgroundRef.current, {
+        yPercent: 20, // Vertical movement percentage
+        // xPercent: 10, // Vertical movement percentage
+
+        ease: "none",
+      });
+    }
+
+    // Cleanup function to kill ScrollTriggers on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section className={styles.about} id="about">
+    <section ref={aboutRef} className={styles.about} id="about">
       <div className={styles.inner}>
         <div className={styles.image}>
-          <Image src="/andrew.jpeg" alt="image of Andrew Sayward" fill />
+          <div ref={backgroundRef}>
+            <Image src="/andrew.jpeg" alt="image of Andrew Sayward" fill />
+          </div>
         </div>
         <div className={styles.content}>
           <p>

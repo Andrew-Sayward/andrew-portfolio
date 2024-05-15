@@ -1,0 +1,67 @@
+import BlogPost from "@/components/BlogPost/blog-post";
+import Header from "@/components/Header/header";
+import { BlogPostData, readBlogPostPage } from "@/helpers/data/read-blog-post-page";
+import { GetStaticPropsResult } from "next";
+import { useState, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+type Props = {
+  page: BlogPostData;
+};
+
+const BlogListing = (props: Props) => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setHasScrolled(position > 0); // Toggle based on scroll position
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      ScrollTrigger.killAll();
+    };
+  }, []);
+
+  return (
+    <>
+      <Header hasScrolled={hasScrolled} />
+      <BlogPost
+        page={{
+          title: props.page.title,
+          coverImage: {
+            url: props.page.coverImage.url,
+            alt: props.page.coverImage.alt,
+          },
+          content: props.page.content,
+        }}
+      />
+    </>
+  );
+};
+
+export default BlogListing;
+
+export async function getServerSideProps(context: any): Promise<GetStaticPropsResult<Props>> {
+  const slug = context.params!.id as string;
+
+  try {
+    const page = await readBlogPostPage(slug);
+    return {
+      props: {
+        page,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch blog post:", error);
+    return {
+      notFound: true,
+    };
+  }
+}
