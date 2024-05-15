@@ -1,11 +1,13 @@
 import { gql } from "graphql-request";
 import { readCmsData } from "./read-cms-data";
 import { ImageDataTypes } from "../models/image-data";
+import { StructuredTextDocument } from "datocms-structured-text-to-plain-text";
 
 export type BlogPostData = {
   title: string;
   coverImage: ImageDataTypes;
-  slug: string;
+  slug?: string;
+  content: StructuredTextDocument;
 };
 
 const blogPostQuery = (slug: string) => gql`

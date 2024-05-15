@@ -2,6 +2,7 @@ import { gql } from "graphql-request";
 
 import { readCmsData } from "./read-cms-data";
 import { BlogPostData } from "./read-blog-post-page";
+import { BlogCardData } from "../models/blog-card-data";
 
 const blogPostQuery = () => gql`
   {
@@ -22,7 +23,7 @@ const blogPostQuery = () => gql`
   }
 `;
 
-export async function readAllBlogs(): Promise<BlogPostData[]> {
+export async function readAllBlogs(): Promise<BlogCardData[]> {
   const QUERY = blogPostQuery();
-  return readCmsData<BlogPostData[]>(QUERY, "allPosts");
+  return readCmsData<BlogCardData[]>(QUERY, "allPosts");
 }

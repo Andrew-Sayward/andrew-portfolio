@@ -9,11 +9,12 @@ import Portfolio from "@/components/Portfolio/portfolio";
 import { readAllBlogs } from "@/helpers/data/read-all-blogs";
 import { BlogPostData } from "@/helpers/data/read-blog-post-page";
 import BlogListingSmall from "@/components/BlogListingSmall/blog-listing-small";
+import { BlogCardData } from "@/helpers/models/blog-card-data";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  blogs: BlogPostData[];
+  blogs: BlogCardData[];
 };
 
 export default function Home(props: Props) {

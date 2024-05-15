@@ -15,8 +15,12 @@
   justify-content: space-between;
   grid-column: 2 / span 10;
 
+  @media (max-width: 767px) {
+    grid-column: 1 / span 12;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .blogCard {
-    flex-basis: calc(100% / 3 - 16px);
     background-color: white;
     color: black;
     display: flex;

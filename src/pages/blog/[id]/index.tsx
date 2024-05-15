@@ -1,16 +1,48 @@
-import { getAllBlogPostSlugs } from "@/helpers/data/get-all-blog-post-slugs";
+import BlogPost from "@/components/BlogPost/blog-post";
+import Header from "@/components/Header/header";
 import { BlogPostData, readBlogPostPage } from "@/helpers/data/read-blog-post-page";
 import { GetStaticPropsResult } from "next";
+import { useState, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 type Props = {
   page: BlogPostData;
 };
 
 const BlogListing = (props: Props) => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setHasScrolled(position > 0); // Toggle based on scroll position
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      ScrollTrigger.killAll();
+    };
+  }, []);
+
   return (
-    <article>
-      <h1>{props.page.title}</h1>
-    </article>
+    <>
+      <Header hasScrolled={hasScrolled} />
+      <BlogPost
+        page={{
+          title: props.page.title,
+          coverImage: {
+            url: props.page.coverImage.url,
+            alt: props.page.coverImage.alt,
+          },
+          content: props.page.content,
+        }}
+      />
+    </>
   );
 };
 

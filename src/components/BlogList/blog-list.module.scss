@@ -19,6 +19,10 @@
 
   h1 {
     grid-column: 2 / span 10;
+
+    @media (max-width: 767px) {
+      grid-column: 1 / span 12;
+    }
   }
 }
 

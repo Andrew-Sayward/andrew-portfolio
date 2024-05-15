@@ -1,0 +1,60 @@
+@import "@/styles/mixins";
+
+.inner {
+  @include container;
+}
+
+.header {
+  padding-top: 120px;
+  padding-bottom: 180px;
+  background-color: black;
+  color: white;
+
+  @media (max-width: 767px) {
+    padding-bottom: 100px;
+  }
+
+  h1 {
+    grid-column: 1 / -1;
+    font-size: 80px;
+
+    @media (max-width: 767px) {
+      font-size: 40px;
+    }
+  }
+}
+
+.image {
+  position: relative;
+  grid-column: 2 / span 10;
+  aspect-ratio: 16/9;
+  margin-top: -64px;
+
+  @media (max-width: 767px) {
+    grid-column: 1 / span 12;
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.content {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  grid-column: 2 / span 10;
+
+  @media (max-width: 767px) {
+    grid-column: 1 / span 12;
+  }
+
+  h2,
+  h2 {
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 16px;
+  }
+}

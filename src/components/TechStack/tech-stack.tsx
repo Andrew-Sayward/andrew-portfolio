@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import styles from "./tech-stack.module.scss";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -25,7 +26,7 @@ const TechStack = () => {
     if (element) {
       ScrollTrigger.create({
         trigger: element,
-        start: "top 35%", // Start checking when the top of the trigger hits the top of the viewport
+        start: "top 50%", // Start checking when the top of the trigger hits the top of the viewport
         end: "top top", // End checking when the bottom of the trigger hits the bottom of the viewport
         onLeave: () => setHasScrolled(true), // Set hasScrolled to true when scrolling back up
         onEnter: () => setHasScrolled(true), // Also set it to true when scrolling down
@@ -39,11 +40,6 @@ const TechStack = () => {
     };
   }, []);
 
-  type Stack = {
-    name: string;
-    logo: string;
-  };
-
   const stack = [
     { name: "Next JS", logo: "/nextjs-icon.png" },
     { name: "ES6/Javascript", logo: "/javascript-icon.png" },
@@ -51,20 +47,7 @@ const TechStack = () => {
     { name: "JSX/HTML", logo: "/jsx.svg" },
     { name: "GraphQL", logo: "/graphql.svg" },
     { name: "GSAP", logo: "/greensock.svg" },
-  ] as Array<Stack>;
-
-  // Fisher-Yates shuffle algorithm to randomize the stack
-  const shuffleArray = (array: Stack[]) => {
-    let shuffledArray = array.slice();
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
-    return shuffledArray;
-  };
-
-  // Shuffle the stack
-  const shuffledStack = shuffleArray(stack);
+  ];
 
   // Define the spring transition
   const spring = {
@@ -80,7 +63,7 @@ const TechStack = () => {
           <h2>Tech Stack</h2>
           {!hasScrolled && !isMobile && (
             <div className={`${styles.techCards} ${styles.techCardsStacked}`}>
-              {shuffledStack.map((item, index) => {
+              {stack.map((item, index) => {
                 return (
                   <motion.div
                     layoutId={item.name}
@@ -102,7 +85,7 @@ const TechStack = () => {
           )}
           {(hasScrolled || isMobile) && (
             <div className={styles.techCards}>
-              {shuffledStack.map((item, index: number) => {
+              {stack.map((item, index) => {
                 return (
                   <motion.div key={index} className={styles.card} layoutId={item.name} transition={spring}>
                     <div className={styles.logo}>
