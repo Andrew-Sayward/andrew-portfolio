@@ -22,6 +22,28 @@ const spring = {
 const Hero = ({ hasScrolled }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (window.innerWidth < 767) {
+      return;
+    }
+    if (sectionRef.current) {
+      gsap.fromTo(
+        sectionRef.current,
+        { y: 0 },
+        {
+          y: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top", // When the top of the section hits the top of the viewport
+            pin: true,
+            pinSpacing: false,
+          },
+        }
+      );
+    }
+  }, []);
+
   const renderButtons = () => {
     return buttons?.map((item, index) => {
       return (
@@ -44,11 +66,21 @@ const Hero = ({ hasScrolled }: Props) => {
                 Andrew Sayward
               </motion.h1>
             )}
-            <p>Senior FrontEnd Web Developer</p>
+            {!hasScrolled && <p>Senior FrontEnd Web Developer</p>}
             {!hasScrolled && <div className={styles.buttons}>{renderButtons()}</div>}
           </div>
           <div className={styles.video}>
-            <VideoEmbed src={"https://vimeo.com/206402420"} loop autoplay muted background fill width={100} height={100} />
+            <VideoEmbed
+              quality="720p"
+              src={"https://vimeo.com/409250080"}
+              loop
+              autoplay
+              muted
+              background
+              fill
+              width={100}
+              height={100}
+            />
           </div>
         </section>
       </div>
