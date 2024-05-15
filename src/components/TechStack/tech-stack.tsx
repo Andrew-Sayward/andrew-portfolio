@@ -26,7 +26,7 @@ const TechStack = () => {
     if (element) {
       ScrollTrigger.create({
         trigger: element,
-        start: "top 50%", // Start checking when the top of the trigger hits the top of the viewport
+        start: "top 30%", // Start checking when the top of the trigger hits the top of the viewport
         end: "top top", // End checking when the bottom of the trigger hits the bottom of the viewport
         onLeave: () => setHasScrolled(true), // Set hasScrolled to true when scrolling back up
         onEnter: () => setHasScrolled(true), // Also set it to true when scrolling down

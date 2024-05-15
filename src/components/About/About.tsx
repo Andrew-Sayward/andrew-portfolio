@@ -8,35 +8,35 @@ const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Registers the plugin
-    gsap.registerPlugin(ScrollTrigger);
+  // useEffect(() => {
+  //   // Registers the plugin
+  //   gsap.registerPlugin(ScrollTrigger);
 
-    // Ensure the refs are correctly set
-    if (backgroundRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: aboutRef.current,
-          start: "top bottom", // When the top of 'aboutRef' hits the bottom of the viewport
-          end: "bottom top", // When the bottom of 'aboutRef' leaves the top of the viewport
-          scrub: true, // Smooth scrubbing
-        },
-      });
+  //   // Ensure the refs are correctly set
+  //   if (backgroundRef.current) {
+  //     const tl = gsap.timeline({
+  //       scrollTrigger: {
+  //         trigger: aboutRef.current,
+  //         start: "top bottom", // When the top of 'aboutRef' hits the bottom of the viewport
+  //         end: "bottom top", // When the bottom of 'aboutRef' leaves the top of the viewport
+  //         scrub: true, // Smooth scrubbing
+  //       },
+  //     });
 
-      // Adjust these values based on the desired effect
-      tl.to(backgroundRef.current, {
-        yPercent: 20, // Vertical movement percentage
-        // xPercent: 10, // Vertical movement percentage
+  //     // Adjust these values based on the desired effect
+  //     tl.to(backgroundRef.current, {
+  //       yPercent: 10, // Vertical movement percentage
+  //       // xPercent: 10, // Vertical movement percentage
 
-        ease: "none",
-      });
-    }
+  //       ease: "none",
+  //     });
+  //   }
 
-    // Cleanup function to kill ScrollTriggers on component unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  //   // Cleanup function to kill ScrollTriggers on component unmount
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //   };
+  // }, []);
 
   return (
     <section ref={aboutRef} className={styles.about} id="about">
