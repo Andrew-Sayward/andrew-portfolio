@@ -43,21 +43,16 @@ const VideoEmbed = React.memo(
         className = "",
         src,
         title = "",
-        autoplay = false,
-        autopause = false,
-        fullscreen = false,
-        loop = false,
+        autoplay = true,
+        loop = true,
         muted = false,
-        background = false,
+        background = true,
         dnt = false,
         quality = "auto",
         width,
         height,
-        fill = false,
-        isPlaying = false,
-        setIsPlaying,
+        fill = true,
         square,
-        isAnimation,
       },
       ref
     ) => {
@@ -65,14 +60,14 @@ const VideoEmbed = React.memo(
       const playerRef = useRef<Player | null>(null);
 
       useEffect(() => {
-        if (!iframeRef.current || youtubeMatch) return;
+        if (!iframeRef.current) return;
 
         playerRef.current = new Player(iframeRef.current);
 
         return () => {
           playerRef.current = null;
         };
-      }, [setIsPlaying]);
+      }, []);
 
       // set video to fill parent container
       useEffect(() => {
@@ -112,41 +107,18 @@ const VideoEmbed = React.memo(
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
-      let isVimeo = false;
-      let isYouTube = false;
-
       // Check if it's a Vimeo URL
       const vimeoMatch = src.match(/^https:\/\/vimeo\.com\/(\d+)(?:\/(\S+))?$/);
       if (vimeoMatch) {
-        isVimeo = true;
         src = `https://player.vimeo.com/video/${vimeoMatch[1]}?h=${vimeoMatch[2]}&`; // Vimeo format
       }
-
-      // Check if it's a YouTube URL
-      const youtubeMatch = src.match(/^https:\/\/(www\.)?youtube\.com\/watch\?v=(\S+)$/);
-      if (youtubeMatch) {
-        isYouTube = true;
-        src = `https://www.youtube.com/embed/${youtubeMatch[2]}?`; // YouTube format
-      }
-
       // Common parameters for both Vimeo and YouTube
       src += `autoplay=${+autoplay}&`;
       src += `loop=${+loop}&`;
       src += `mute=${+muted}&`;
-      // Add more common parameters as needed
-
-      // Vimeo-specific parameters
-      if (isVimeo) {
-        src += `background=${+background}&`;
-        src += `dnt=${+dnt}&`;
-        src += `quality=${quality}&`;
-        // Add more Vimeo-specific parameters
-      }
-
-      // YouTube-specific parameters
-      if (isYouTube) {
-        // Add YouTube-specific parameters if needed
-      }
+      src += `background=${+background}&`;
+      src += `dnt=${+dnt}&`;
+      src += `quality=${quality}&`;
 
       useImperativeHandle(
         ref,
