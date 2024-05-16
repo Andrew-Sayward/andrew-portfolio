@@ -4,12 +4,22 @@ import { BlogPostData, readBlogPostPage } from "@/helpers/data/read-blog-post-pa
 import { GetStaticPropsResult } from "next";
 
 import HeaderAlt from "@/components/HeaderAlt/header-alt";
+import { useEffect } from "react";
 
 type Props = {
   page: BlogPostData;
 };
 
 const BlogListing = (props: Props) => {
+  useEffect(() => {
+    // Wait for your animation to finish or delay the scroll as needed
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50); // Adjust time based on your animation needs
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <HeaderAlt />

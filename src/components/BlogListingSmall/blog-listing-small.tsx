@@ -18,7 +18,7 @@ const BlogListingSmall = ({ blogs }: Props) => {
             .slice(0, 3)
             .map((item, index) => {
               return (
-                <Link href={"/blog/" + item.slug} key={index}>
+                <Link href={"/blog/" + item.slug} key={index} scroll={false}>
                   <div className={styles.blogCard}>
                     <div className={styles.image}>
                       <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />
@@ -33,7 +33,7 @@ const BlogListingSmall = ({ blogs }: Props) => {
             })}
         </div>
         <div className={styles.link}>
-          <Link className={styles.view} href="/blog/">
+          <Link className={styles.view} href="/blog/" scroll={false}>
             View all blogs
           </Link>
         </div>

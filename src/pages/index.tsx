@@ -26,6 +26,15 @@ export default function Home(props: Props) {
   };
 
   useEffect(() => {
+    // Wait for your animation to finish or delay the scroll as needed
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50); // Adjust time based on your animation needs
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const handleHashChange = () => {
       if (window.location.hash) {
         const id = window.location.hash.substring(1);

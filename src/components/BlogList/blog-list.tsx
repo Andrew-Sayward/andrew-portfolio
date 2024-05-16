@@ -26,7 +26,7 @@ const BlogList = ({ blogs }: Props) => {
             .slice(0, loadSize)
             .map((item, index) => {
               return (
-                <Link href={"/blog/" + item.slug} key={index}>
+                <Link href={"/blog/" + item.slug} key={index} scroll={false}>
                   <div className={styles.blogCard}>
                     <div className={styles.image}>
                       <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />

@@ -51,7 +51,12 @@ const HeaderAlt = () => {
 
   const renderButtons = () => {
     return buttons?.map((item, index) => (
-      <Link legacyBehavior href={createHomepageAnchorLink(item.toLowerCase().replace(" ", ""), isHome)} key={index}>
+      <Link
+        legacyBehavior
+        href={createHomepageAnchorLink(item.toLowerCase().replace(" ", ""), isHome)}
+        scroll={false}
+        key={index}
+      >
         <a>
           <button className={styles.button}>{item}</button>
         </a>
@@ -63,7 +68,7 @@ const HeaderAlt = () => {
     <>
       <header ref={mainRef} className={`${styles.header} ${hasScrolled ? styles.mobileHeader : ""}`}>
         <div className={styles.inner}>
-          <Link href="/" legacyBehavior>
+          <Link href="/" legacyBehavior scroll={false}>
             <a>
               <div className={styles.logoOutter}>
                 <span className={styles.logo}>:{"}"}</span>
