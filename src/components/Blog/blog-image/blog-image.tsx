@@ -9,7 +9,12 @@ type Props = {
 const BlogImage = (props: Props) => {
   return (
     <div className={styles.imageContainer}>
-      <Image src={props.image.url} alt={props.image.alt} fill />;
+      <Image
+        src={props.image.url}
+        alt={props.image.alt}
+        width={props.image.width ? props.image.width / 4 : 0}
+        height={props.image.height ? props.image.height / 4 : 0}
+      />
     </div>
   );
 };

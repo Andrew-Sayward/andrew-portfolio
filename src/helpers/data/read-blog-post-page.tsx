@@ -11,49 +11,59 @@ export type BlogPostData = {
 };
 
 const blogPostQuery = (slug: string) => gql`
-    {
-      post(filter: {slug: {eq: "${slug}"}}) {      
-        id
+  {
+    post(filter: { slug: { eq: "chasing-the-northern-lights-in-iceland" } }) {
+      id
+      title
+      _status
+      _firstPublishedAt
+      _publishedAt
+      date
+      excerpt
+      slug
+      seoSettings {
+        twitterCard
         title
-        _status
-        _firstPublishedAt
-        _publishedAt
-        date
-        excerpt
-        slug
-        seoSettings {
-          twitterCard
-          title
-          image {
-            alt
-            url
-          }
-          description
-        }
-        category {
-          name
-        }
-        content {
-          value
-          links
-          blocks {
-            __typename
-            id
-            ... on ImageBlockRecord {
-              image {
-                url
-                alt
-              }
-            }
-          }
-        }
-        coverImage {
+        image {
           alt
           url
         }
+        description
+      }
+      category {
+        name
+      }
+      content {
+        value
+        links
+        blocks {
+          __typename
+          ... on ImageBlockRecord {
+            __typename
+            image {
+              url
+              alt
+              width
+              height
+            }
+          }
+          ... on MultipleImageRecord {
+            __typename
+            id
+            imageGallery {
+              alt
+              url
+            }
+          }
+        }
+      }
+      coverImage {
+        alt
+        url
       }
     }
-  `;
+  }
+`;
 
 export async function readBlogPostPage(slug: string): Promise<BlogPostData> {
   const QUERY = blogPostQuery(slug);
