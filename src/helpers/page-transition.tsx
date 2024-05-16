@@ -44,7 +44,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
                 left: 0,
                 bottom: 0,
                 backgroundColor: "#000", // Customize your color
-                zIndex: 1000,
+                zIndex: 2000, // Ensure a higher z-index
                 width: "50%",
               }}
             />
@@ -61,7 +61,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
                 right: 0,
                 bottom: 0,
                 backgroundColor: "#000", // Customize your color
-                zIndex: 1000,
+                zIndex: 2000, // Ensure a higher z-index
                 width: "50%",
               }}
             />
@@ -74,7 +74,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, delay: showBlock ? 1.2 : 0 }} // Add delay to entry animation
           className={styles.container}
         >
           {children}
