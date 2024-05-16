@@ -2,12 +2,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/router";
+import useMaintainStyles from "@/hooks/useMaintainStyles";
 
 const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const [showBlock, setShowBlock] = useState(false);
   const hasMountedRef = useRef(false);
   const router = useRouter();
   const pathWithoutQuery = router.asPath.split("?")[0];
+  useMaintainStyles();
 
   useEffect(() => {
     if (!hasMountedRef.current) {
