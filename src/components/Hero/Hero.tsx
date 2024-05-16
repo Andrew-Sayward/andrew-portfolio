@@ -1,7 +1,7 @@
-import VideoEmbed from "@/atoms/video-embed/video-embed";
+import VideoEmbed, { VideoEmbedHandler } from "@/atoms/video-embed/video-embed";
 import styles from "./hero.module.scss";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import buttons from "@/helpers/buttons";
@@ -21,6 +21,8 @@ const spring = {
 
 const Hero = ({ hasScrolled }: Props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<VideoEmbedHandler>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth < 767) {
@@ -56,6 +58,12 @@ const Hero = ({ hasScrolled }: Props) => {
     });
   };
 
+  useEffect(() => {
+    videoRef.current?.onPlay(() => {
+      setIsPlaying(true);
+    });
+  });
+
   return (
     <>
       <section className={styles.hero} id="home" ref={sectionRef}>
@@ -68,7 +76,8 @@ const Hero = ({ hasScrolled }: Props) => {
           {!hasScrolled && <p>Senior FrontEnd Web Developer</p>}
           {!hasScrolled && <div className={styles.buttons}>{renderButtons()}</div>}
         </div>
-        <div className={styles.video}>
+        <div className={styles.placeholder}>&nbsp;</div>
+        <div className={styles.video} style={{ opacity: isPlaying ? 1 : 0, transition: "all 0.4s ease" }}>
           <VideoEmbed
             quality="240p"
             src={"https://vimeo.com/409250080"}
@@ -79,6 +88,7 @@ const Hero = ({ hasScrolled }: Props) => {
             fill
             width={100}
             height={100}
+            ref={videoRef}
           />
         </div>
       </section>
