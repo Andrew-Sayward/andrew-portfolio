@@ -9,6 +9,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // Utility function to create homepage anchor links
 const createHomepageAnchorLink = (id: string, isHome: boolean) => {
+  console.log(id);
+  if (id === "blog" || id === "Blog") {
+    return `/blog`;
+  }
   return isHome ? `#${id}` : `/#${id}`;
 };
 

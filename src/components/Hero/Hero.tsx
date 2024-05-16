@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import buttons from "@/helpers/buttons";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,11 +45,11 @@ const Hero = ({ hasScrolled }: Props) => {
 
   const renderButtons = () => {
     return buttons?.map((item) => (
-      <a href={`#${item.toLowerCase().replace(" ", "")}`} key={item}>
+      <Link href={item === "blog" || item === "Blog" ? "/blog" : `#${item.toLowerCase().replace(" ", "")}`} key={item}>
         <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
           {item}
         </motion.button>
-      </a>
+      </Link>
     ));
   };
 
