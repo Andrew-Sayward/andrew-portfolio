@@ -1,0 +1,77 @@
+@import "@/styles/mixins";
+
+.header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  color: white;
+  padding: 16px 0;
+  mix-blend-mode: difference;
+  z-index: 998;
+  transition: all 0.4s ease;
+
+  &.mobileHeader {
+    @media (max-width: 767px) {
+      background-color: white;
+      mix-blend-mode: unset;
+      color: black;
+      box-shadow: 0px 0px 2px 0px #000;
+    }
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.logoOutter {
+  display: flex;
+  align-items: center;
+  pointer-events: all;
+
+  span {
+    display: block;
+  }
+
+  .name {
+    line-height: 1;
+    margin-left: 8px;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: 16px;
+    color: white;
+  }
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.floatingButtons {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  z-index: 999;
+
+  .button {
+    background-color: black;
+    color: white;
+  }
+}
+
+.button {
+  border-radius: 50px;
+  background-color: white;
+  border: 1px solid white;
+  color: #000;
+  padding: 8px 24px;
+  margin-right: 16px;
+  font-size: 16px;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 import BlogList from "@/components/BlogList/blog-list";
-import Header from "@/components/Header/header";
+import HeaderAlt from "@/components/HeaderAlt/header-alt";
 import { readAllBlogs } from "@/helpers/data/read-all-blogs";
 import { readBlogListing } from "@/helpers/data/read-blog-listing";
 
@@ -11,7 +11,7 @@ type Props = {
 const BlogListing = (props: Props) => {
   return (
     <>
-      <Header hasScrolled={false} />
+      <HeaderAlt />
       <BlogList blogs={props.blogs}></BlogList>
     </>
   );

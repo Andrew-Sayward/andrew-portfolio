@@ -12,7 +12,7 @@ export type BlogPostData = {
 
 const blogPostQuery = (slug: string) => gql`
   {
-    post(filter: { slug: { eq: "chasing-the-northern-lights-in-iceland" } }) {
+    post(filter: {slug: {eq: "${slug}"}}) {
       id
       title
       _status

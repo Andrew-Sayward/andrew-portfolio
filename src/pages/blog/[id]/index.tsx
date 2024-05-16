@@ -2,36 +2,17 @@ import BlogPost from "@/components/BlogPost/blog-post";
 import Header from "@/components/Header/header";
 import { BlogPostData, readBlogPostPage } from "@/helpers/data/read-blog-post-page";
 import { GetStaticPropsResult } from "next";
-import { useState, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+import HeaderAlt from "@/components/HeaderAlt/header-alt";
 
 type Props = {
   page: BlogPostData;
 };
 
 const BlogListing = (props: Props) => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  const handleScroll = () => {
-    const position = window.scrollY;
-    setHasScrolled(position > 0); // Toggle based on scroll position
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      ScrollTrigger.killAll();
-    };
-  }, []);
-
   return (
     <>
-      <Header hasScrolled={hasScrolled} />
+      <HeaderAlt />
       <BlogPost
         page={{
           title: props.page.title,
