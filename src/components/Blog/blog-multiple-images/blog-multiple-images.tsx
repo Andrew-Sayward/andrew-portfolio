@@ -8,7 +8,7 @@ type Props = {
 
 const BlogMultipleImages = ({ images }: Props) => {
   return (
-    <section>
+    <section className={styles.multiImageContainer}>
       {images.map((item, index) => {
         return (
           <div key={index} className={styles.multiImage}>

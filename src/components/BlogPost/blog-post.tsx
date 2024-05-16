@@ -62,8 +62,8 @@ const BlogPost = ({ page }: Props) => {
                         }}
                       />
                     );
-                  // case "MultipleImageRecord":
-                  //   return <BlogMultipleImages images={record.imageGallery} />;
+                  case "MultipleImageRecord":
+                    return <BlogMultipleImages images={record.imageGallery} />;
                   default:
                     return null;
                 }
