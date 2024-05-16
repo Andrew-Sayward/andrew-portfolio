@@ -14,11 +14,11 @@ const createHomepageAnchorLink = (id: string, isHome: boolean) => {
 
 const HeaderAlt = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
-  const router = useRouter();
-  const mainRef = useRef(null);
+  const { pathname } = useRouter();
+  const mainRef = useRef<HTMLElement | null>(null);
 
   // Check if the current page is the homepage
-  const isHome = router.pathname === "/";
+  const isHome = pathname === "/";
 
   const handleScroll = () => {
     const position = window.scrollY;
@@ -50,12 +50,12 @@ const HeaderAlt = () => {
   }, []);
 
   const renderButtons = () => {
-    return buttons?.map((item, index) => (
+    return buttons?.map((item) => (
       <Link
         legacyBehavior
         href={createHomepageAnchorLink(item.toLowerCase().replace(" ", ""), isHome)}
         scroll={false}
-        key={index}
+        key={item}
       >
         <a>
           <button className={styles.button}>{item}</button>

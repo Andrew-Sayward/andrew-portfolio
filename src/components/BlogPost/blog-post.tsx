@@ -37,12 +37,12 @@ const BlogPost = ({ page }: Props) => {
                 // Heading
                 renderNodeRule(isHeading, ({ node, key }) => {
                   const heading = toPlainText(node);
-                  return <Subheading key={key} subheading={heading ? heading : ""} />;
+                  return <Subheading key={key} subheading={heading || ""} />;
                 }),
                 // Quote
                 renderNodeRule(isBlockquote, ({ node, key }) => {
                   const quote = toPlainText(node);
-                  return <PullQuote key={key} quote={quote ? quote : ""} />;
+                  return <PullQuote key={key} quote={quote || ""} />;
                 }),
                 // Paragraph
                 renderNodeRule(isParagraph, ({ adapter: { renderNode }, children, key }) => {

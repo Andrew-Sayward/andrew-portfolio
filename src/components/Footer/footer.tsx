@@ -8,11 +8,11 @@ const Footer = () => {
         <div>
           <h3>Get in touch</h3>
           <div className={styles.socials}>
-            <a href="https://www.linkedin.com/in/andrew-sayward/" target="_blank">
-              <Image src="/linkedin-black.png" alt="" fill />
+            <a href="https://www.linkedin.com/in/andrew-sayward/" target="_blank" rel="noopener noreferrer">
+              <Image src="/linkedin-black.png" alt="LinkedIn" fill />
             </a>
-            <a href="mailto:andrewsayward@hotmail.co.uk" target="_blank">
-              <Image src="/black-email.png" alt="" fill />
+            <a href="mailto:andrewsayward@hotmail.co.uk" target="_blank" rel="noopener noreferrer">
+              <Image src="/black-email.png" alt="Email" fill />
             </a>
           </div>
         </div>

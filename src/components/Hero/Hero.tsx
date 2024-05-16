@@ -29,61 +29,54 @@ const Hero = ({ hasScrolled }: Props) => {
       return;
     }
     if (sectionRef.current) {
-      gsap.fromTo(
-        sectionRef.current,
-        { y: 0 },
-        {
-          y: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top", // When the top of the section hits the top of the viewport
-            pin: true,
-            pinSpacing: false,
-          },
-        }
-      );
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top", // When the top of the section hits the top of the viewport
+        pin: true,
+        pinSpacing: false,
+      });
+
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
     }
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
   }, []);
 
   const renderButtons = () => {
-    return buttons?.map((item, index) => {
-      return (
-        <a href={"#" + item.toLowerCase().replace(" ", "")} key={index}>
-          <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
-            {item}
-          </motion.button>
-        </a>
-      );
-    });
+    return buttons?.map((item) => (
+      <a href={`#${item.toLowerCase().replace(" ", "")}`} key={item}>
+        <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
+          {item}
+        </motion.button>
+      </a>
+    ));
   };
 
   useEffect(() => {
     videoRef.current?.onPlay(() => {
       setIsPlaying(true);
     });
-  });
+  }, []);
 
   return (
     <section>
       <div className={styles.hero} id="home" ref={sectionRef}>
         <div className={styles.inner}>
           {!hasScrolled && (
-            <motion.h1 transition={spring} layoutId="andrew-h1">
-              Andrew Sayward
-            </motion.h1>
+            <>
+              <motion.h1 transition={spring} layoutId="andrew-h1">
+                Andrew Sayward
+              </motion.h1>
+              <p>Senior FrontEnd Web Developer</p>
+              <div className={styles.buttons}>{renderButtons()}</div>
+            </>
           )}
-          {!hasScrolled && <p>Senior FrontEnd Web Developer</p>}
-          {!hasScrolled && <div className={styles.buttons}>{renderButtons()}</div>}
         </div>
         <div className={styles.placeholder}>&nbsp;</div>
         <div className={styles.video} style={{ opacity: isPlaying ? 1 : 0, transition: "all 0.4s ease" }}>
           <VideoEmbed
             quality="240p"
-            src={"https://vimeo.com/409250080"}
+            src="https://vimeo.com/409250080"
             loop
             autoplay
             muted

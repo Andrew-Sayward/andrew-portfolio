@@ -1,16 +1,14 @@
 import BlogPost from "@/components/BlogPost/blog-post";
-import Header from "@/components/Header/header";
-import { BlogPostData, readBlogPostPage } from "@/helpers/data/read-blog-post-page";
-import { GetStaticPropsResult } from "next";
-
 import HeaderAlt from "@/components/HeaderAlt/header-alt";
+import { BlogPostData, readBlogPostPage } from "@/helpers/data/read-blog-post-page";
+import { GetServerSideProps } from "next";
 import { useEffect } from "react";
 
 type Props = {
   page: BlogPostData;
 };
 
-const BlogListing = (props: Props) => {
+const BlogListing = ({ page }: Props) => {
   useEffect(() => {
     // Wait for your animation to finish or delay the scroll as needed
     const timer = setTimeout(() => {
@@ -25,12 +23,12 @@ const BlogListing = (props: Props) => {
       <HeaderAlt />
       <BlogPost
         page={{
-          title: props.page.title,
+          title: page.title,
           coverImage: {
-            url: props.page.coverImage.url,
-            alt: props.page.coverImage.alt,
+            url: page.coverImage.url,
+            alt: page.coverImage.alt,
           },
-          content: props.page.content,
+          content: page.content,
         }}
       />
     </>
@@ -39,8 +37,8 @@ const BlogListing = (props: Props) => {
 
 export default BlogListing;
 
-export async function getServerSideProps(context: any): Promise<GetStaticPropsResult<Props>> {
-  const slug = context.params!.id as string;
+export const getServerSideProps: GetServerSideProps<Props> = async (context) => {
+  const slug = context.params?.id as string;
 
   try {
     const page = await readBlogPostPage(slug);
@@ -55,4 +53,4 @@ export async function getServerSideProps(context: any): Promise<GetStaticPropsRe
       notFound: true,
     };
   }
-}
+};

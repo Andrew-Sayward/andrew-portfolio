@@ -10,7 +10,6 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const pathWithoutQuery = router.asPath.split("?")[0];
 
   useEffect(() => {
-    // Skip the first effect invocation (component mount)
     if (!hasMountedRef.current) {
       hasMountedRef.current = true;
       return;
@@ -20,7 +19,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
     const timer = setTimeout(() => {
       setShowBlock(false);
-    }, 1500); // Adjust the duration as needed
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [pathWithoutQuery]);
@@ -34,7 +33,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
           <>
             <motion.div
               className={styles.block}
-              key="page-transition"
+              key="page-transition-top"
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
               exit={{ y: "-100%" }}
@@ -51,7 +50,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
             />
             <motion.div
               className={styles.block}
-              key="page-transition"
+              key="page-transition-bottom"
               initial={{ y: "-100%" }}
               animate={{ y: "0%" }}
               exit={{ y: "100%" }}

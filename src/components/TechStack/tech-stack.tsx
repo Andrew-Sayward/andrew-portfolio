@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import styles from "./tech-stack.module.scss";
 import Image from "next/image";
-import { useState } from "react";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -11,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TechStack = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const isMobile = useMediaQuery(767);
 
   useEffect(() => {
@@ -59,47 +58,41 @@ const TechStack = () => {
   return (
     <section ref={sectionRef} className={styles.techStack} id="techstack" style={{ height: isMobile ? "auto" : "600px" }}>
       <div className={styles.inner}>
-        <div>
-          <h2>Tech Stack</h2>
-          {!hasScrolled && !isMobile && (
-            <div className={`${styles.techCards} ${styles.techCardsStacked}`}>
-              {stack.map((item, index) => {
-                return (
-                  <motion.div
-                    layoutId={item.name}
-                    key={index}
-                    className={styles.card}
-                    style={{ top: index * 40, left: index * 40 }}
-                    transition={spring}
-                  >
-                    <div className={styles.logo}>
-                      <Image src={item.logo} alt={item.name} fill />
-                    </div>
-                    <div className={styles.content}>
-                      <p>{item.name}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          )}
-          {(hasScrolled || isMobile) && (
-            <div className={styles.techCards}>
-              {stack.map((item, index) => {
-                return (
-                  <motion.div key={index} className={styles.card} layoutId={item.name} transition={spring}>
-                    <div className={styles.logo}>
-                      <Image src={item.logo} alt={item.name} fill />
-                    </div>
-                    <div className={styles.content}>
-                      <p>{item.name}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          )}
-        </div>
+        <h2>Tech Stack</h2>
+        {!hasScrolled && !isMobile && (
+          <div className={`${styles.techCards} ${styles.techCardsStacked}`}>
+            {stack.map((item, index) => (
+              <motion.div
+                layoutId={item.name}
+                key={item.name}
+                className={styles.card}
+                style={{ top: index * 40, left: index * 40 }}
+                transition={spring}
+              >
+                <div className={styles.logo}>
+                  <Image src={item.logo} alt={item.name} fill />
+                </div>
+                <div className={styles.content}>
+                  <p>{item.name}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+        {(hasScrolled || isMobile) && (
+          <div className={styles.techCards}>
+            {stack.map((item) => (
+              <motion.div key={item.name} className={styles.card} layoutId={item.name} transition={spring}>
+                <div className={styles.logo}>
+                  <Image src={item.logo} alt={item.name} fill />
+                </div>
+                <div className={styles.content}>
+                  <p>{item.name}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

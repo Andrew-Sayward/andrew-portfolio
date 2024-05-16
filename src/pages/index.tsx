@@ -17,7 +17,7 @@ type Props = {
   blogs: BlogCardData[];
 };
 
-export default function Home(props: Props) {
+const Home = ({ blogs }: Props) => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const handleScroll = () => {
@@ -70,13 +70,15 @@ export default function Home(props: Props) {
       <About />
       <TechStack />
       <Portfolio />
-      <BlogListingSmall blogs={props.blogs} />
+      <BlogListingSmall blogs={blogs} />
     </main>
   );
-}
+};
 
-export async function getStaticProps(context: any): Promise<{ props: Props }> {
-  const [blogs] = await Promise.all([readAllBlogs()]);
+export default Home;
+
+export async function getStaticProps(): Promise<{ props: Props }> {
+  const blogs = await readAllBlogs();
 
   return {
     props: {
