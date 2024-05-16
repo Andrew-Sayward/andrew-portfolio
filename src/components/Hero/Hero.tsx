@@ -46,7 +46,7 @@ const Hero = ({ hasScrolled }: Props) => {
   const renderButtons = () => {
     return buttons?.map((item) =>
       item === "blog" || item === "Blog" ? (
-        <Link href={"/blog"} key={item}>
+        <Link href={"/blog"} key={item} scroll={false}>
           <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
             {item}
           </motion.button>

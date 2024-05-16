@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: any) {
         <link rel="dns-prefetch" href="https://i.vimeocdn.com" />
         <link rel="dns-prefetch" href="https://player.vimeo.com" />
       </Head>
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         <GridTransition>
           <Component {...pageProps} key={router.asPath} />
         </GridTransition>
