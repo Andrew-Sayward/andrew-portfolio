@@ -21,7 +21,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
     const timer = setTimeout(() => {
       setShowBlock(false);
-    }, 1500);
+    }, 1500); // Adjust this timeout to match your transition duration
 
     return () => clearTimeout(timer);
   }, [pathWithoutQuery]);
@@ -46,7 +46,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
                 left: 0,
                 bottom: 0,
                 backgroundColor: "#000", // Customize your color
-                zIndex: 1000,
+                zIndex: 2000, // Ensure a higher z-index
                 width: "50%",
               }}
             />
@@ -63,7 +63,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
                 right: 0,
                 bottom: 0,
                 backgroundColor: "#000", // Customize your color
-                zIndex: 1000,
+                zIndex: 2000, // Ensure a higher z-index
                 width: "50%",
               }}
             />
