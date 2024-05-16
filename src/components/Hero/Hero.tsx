@@ -44,6 +44,9 @@ const Hero = ({ hasScrolled }: Props) => {
         }
       );
     }
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   const renderButtons = () => {
@@ -65,8 +68,8 @@ const Hero = ({ hasScrolled }: Props) => {
   });
 
   return (
-    <>
-      <section className={styles.hero} id="home" ref={sectionRef}>
+    <section>
+      <div className={styles.hero} id="home" ref={sectionRef}>
         <div className={styles.inner}>
           {!hasScrolled && (
             <motion.h1 transition={spring} layoutId="andrew-h1">
@@ -91,9 +94,9 @@ const Hero = ({ hasScrolled }: Props) => {
             ref={videoRef}
           />
         </div>
-      </section>
+      </div>
       {hasScrolled && <div className={styles.floatingButtons}>{renderButtons()}</div>}
-    </>
+    </section>
   );
 };
 
