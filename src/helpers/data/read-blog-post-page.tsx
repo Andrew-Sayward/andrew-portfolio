@@ -21,6 +21,7 @@ const blogPostQuery = (slug: string) => gql`
       date
       excerpt
       slug
+      date
       seoSettings {
         twitterCard
         title

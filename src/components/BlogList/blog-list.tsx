@@ -3,6 +3,7 @@ import styles from "./blog-list.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { sortByDate } from "@/helpers/sort-by-date";
 
 type Props = {
   blogs: BlogCardData[];
@@ -21,18 +22,23 @@ const BlogList = ({ blogs }: Props) => {
       </div>
       <div className={styles.inner}>
         <div className={styles.blogCards}>
-          {blogs.slice(0, loadSize).map((item, index) => {
-            return (
-              <Link href={"/blog/" + item.slug} key={index}>
-                <div className={styles.blogCard}>
-                  <div className={styles.image}>
-                    <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />
+          {sortByDate(blogs)
+            .slice(0, loadSize)
+            .map((item, index) => {
+              return (
+                <Link href={"/blog/" + item.slug} key={index}>
+                  <div className={styles.blogCard}>
+                    <div className={styles.image}>
+                      <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />
+                    </div>
+                    <div>
+                      <h3>{item.title}</h3>
+                      {item.excerpt && <p>{item.excerpt}</p>}
+                    </div>
                   </div>
-                  <h3>{item.title}</h3>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
         </div>
       </div>
       {blogs.length > loadSize && (
