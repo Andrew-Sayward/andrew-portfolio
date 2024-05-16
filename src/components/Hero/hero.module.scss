@@ -103,28 +103,9 @@
 }
 
 .floatingButtons {
-  position: fixed;
-  top: 0;
-  right: 0;
-  padding: 16px;
-  z-index: 999;
-
-  .button {
-    background-color: black;
-    color: white;
-  }
+  @include floatingNav;
 }
 
 .button {
-  border-radius: 50px;
-  background-color: white;
-  border: 1px solid white;
-  color: #000;
-  padding: 8px 24px;
-  margin-right: 16px;
-  font-size: 16px;
-
-  @media (max-width: 767px) {
-    display: none;
-  }
+  @include buttons;
 }
