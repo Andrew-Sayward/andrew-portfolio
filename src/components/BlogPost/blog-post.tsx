@@ -9,6 +9,7 @@ import PullQuote from "../Blog/pull-quote/pull-quote";
 import Subheading from "../Blog/subheading/subheading";
 import Image from "next/image";
 import BlogImage from "../Blog/blog-image/blog-image";
+import BlogMultipleImages from "../Blog/blog-multiple-images/blog-multiple-images";
 
 type Props = {
   page: BlogPostData;
@@ -49,16 +50,20 @@ const BlogPost = ({ page }: Props) => {
                 }),
               ]}
               renderBlock={({ record }: any) => {
-                switch (record._typename) {
+                switch (record.__typename) {
                   case "ImageBlockRecord":
                     return (
                       <BlogImage
                         image={{
                           url: record.image.url,
                           alt: record.image.alt,
+                          width: record.image.width,
+                          height: record.image.height,
                         }}
                       />
                     );
+                  case "MultipleImageRecord":
+                    return <BlogMultipleImages images={record.imageGallery} />;
                   default:
                     return null;
                 }
