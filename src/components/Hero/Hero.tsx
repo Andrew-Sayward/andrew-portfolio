@@ -44,13 +44,21 @@ const Hero = ({ hasScrolled }: Props) => {
   }, []);
 
   const renderButtons = () => {
-    return buttons?.map((item) => (
-      <Link href={item === "blog" || item === "Blog" ? "/blog" : `#${item.toLowerCase().replace(" ", "")}`} key={item}>
-        <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
-          {item}
-        </motion.button>
-      </Link>
-    ));
+    return buttons?.map((item) =>
+      item === "blog" || item === "Blog" ? (
+        <Link href={"/blog"} key={item}>
+          <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
+            {item}
+          </motion.button>
+        </Link>
+      ) : (
+        <a href={`#${item.toLowerCase().replace(" ", "")}`} key={item}>
+          <motion.button className={styles.button} layoutId={item.replace(" ", "")} transition={spring}>
+            {item}
+          </motion.button>
+        </a>
+      )
+    );
   };
 
   useEffect(() => {
