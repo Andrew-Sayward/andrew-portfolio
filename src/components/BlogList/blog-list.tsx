@@ -12,6 +12,10 @@ type Props = {
 const BlogList = ({ blogs }: Props) => {
   const [loadSize, setLoadSize] = useState(6);
 
+  const handleLoadMore = () => {
+    setLoadSize((prevSize) => prevSize + 6);
+  };
+
   return (
     <section className={styles.blogList}>
       <div className={styles.header}>
@@ -24,32 +28,24 @@ const BlogList = ({ blogs }: Props) => {
         <div className={styles.blogCards}>
           {sortByDate(blogs)
             .slice(0, loadSize)
-            .map((item, index) => {
-              return (
-                <Link href={"/blog/" + item.slug} key={index} scroll={false}>
-                  <div className={styles.blogCard}>
-                    <div className={styles.image}>
-                      <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />
-                    </div>
-                    <div>
-                      <h3>{item.title}</h3>
-                      {item.excerpt && <p>{item.excerpt}</p>}
-                    </div>
+            .map((item) => (
+              <Link href={`/blog/${item.slug}`} key={item.slug} scroll={false}>
+                <div className={styles.blogCard}>
+                  <div className={styles.image}>
+                    <Image src={item.coverImage.url} alt={item.coverImage.alt} fill />
                   </div>
-                </Link>
-              );
-            })}
+                  <div>
+                    <h3>{item.title}</h3>
+                    {item.excerpt && <p>{item.excerpt}</p>}
+                  </div>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
       {blogs.length > loadSize && (
         <div className={styles.loadMoreSection}>
-          <button
-            onClick={() => {
-              setLoadSize(loadSize + 6);
-            }}
-          >
-            Load More
-          </button>
+          <button onClick={handleLoadMore}>Load More</button>
         </div>
       )}
     </section>
