@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: any) {
 
         // Setup cleanup after animation completes
         // Assuming a fixed transition duration, adjust as needed
-        setTimeout(cleanup, 2000); // Adjust this timeout to your transition duration
+        setTimeout(cleanup, 5000); // Adjust this timeout to your transition duration
       });
     };
 
