@@ -21,7 +21,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
     const timer = setTimeout(() => {
       setShowBlock(false);
-    }, 1500);
+    }, 1500); // This includes a buffer for the transition duration
 
     return () => clearTimeout(timer);
   }, [pathWithoutQuery]);
