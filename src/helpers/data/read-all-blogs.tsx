@@ -15,6 +15,8 @@ const blogPostQuery = () => gql`
       date
       excerpt
       slug
+      date
+      excerpt
       coverImage {
         alt
         url

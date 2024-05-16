@@ -4,4 +4,6 @@ export type BlogCardData = {
   title: string;
   coverImage: ImageDataTypes;
   slug: string;
+  date: string;
+  excerpt: string;
 };
