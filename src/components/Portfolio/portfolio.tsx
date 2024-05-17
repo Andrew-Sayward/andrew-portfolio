@@ -19,7 +19,7 @@ const Portfolio = () => {
     {
       name: "Soho House",
       image: "/soho-house.jpeg",
-      copy: "I took the lead on the SohoHouse project, managing the build solo while my team focused on other priorities. The main challenge? Integrating job descriptions delivered as a single block of markdown data. To overcome this, I leveraged Framer Motion to design smooth transitions between the career listings and job details. This approach not only maintained the site’s modern feel but also seamlessly connected the content, enhancing user experience by making it appear as though everything existed on one continuous page. ",
+      copy: "I took the lead on the SohoHouse project, managing the build solo while my team focused on other priorities. The main challenge was integrating job descriptions delivered as a single block of markdown data. To overcome this, I leveraged Framer Motion to design smooth transitions between the career listings and job details. This approach not only maintained the site’s modern feel but also seamlessly connected the content, enhancing user experience by making it appear as though everything existed on one continuous page. ",
       link: "https://careers.sohohouse.com",
     },
     {
