@@ -77,7 +77,7 @@ const Home = ({ blogs }: Props) => {
 
 export default Home;
 
-export async function getStaticProps(): Promise<{ props: Props }> {
+export async function getServerSideProps(): Promise<{ props: Props }> {
   const blogs = await readAllBlogs();
 
   return {

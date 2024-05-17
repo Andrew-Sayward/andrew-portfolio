@@ -27,7 +27,7 @@ const BlogListing = (props: Props) => {
 };
 export default BlogListing;
 
-export async function getStaticProps(context: any): Promise<{ props: Props }> {
+export async function getServerSideProps(context: any): Promise<{ props: Props }> {
   const [blogs] = await Promise.all([readAllBlogs()]);
 
   return {
