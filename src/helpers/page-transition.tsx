@@ -73,7 +73,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={pathWithoutQuery}
-          initial={{ opacity: 0 }}
+          initial={false} // Disable initial animation
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
