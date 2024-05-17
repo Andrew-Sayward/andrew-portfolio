@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./portfolio.module.scss";
 import Image from "next/image";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const Portfolio = () => {
   gsap.registerPlugin(ScrollTrigger);

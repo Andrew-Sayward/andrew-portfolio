@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
 gsap.registerPlugin(ScrollTrigger);

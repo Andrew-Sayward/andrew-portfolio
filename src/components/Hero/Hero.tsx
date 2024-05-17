@@ -3,7 +3,7 @@ import styles from "./hero.module.scss";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import buttons from "@/helpers/buttons";
 import Link from "next/link";
 

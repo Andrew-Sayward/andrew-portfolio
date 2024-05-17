@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import styles from "./about.module.scss";
 import Image from "next/image";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const About = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
