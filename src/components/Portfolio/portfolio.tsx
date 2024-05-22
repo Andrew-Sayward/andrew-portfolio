@@ -32,7 +32,7 @@ const Portfolio = () => {
       name: "OnRunning",
       image: "onrunning.jpeg",
       copy: "OnRunning marked my initial foray into building a large-scale website. The site features dynamic job description pages that integrate data from multiple CMS and data fields. These pages are tailored to each job, displaying detailed information about location, team involvement, and other job-specific details, creating a comprehensive and relevant user experience.",
-      link: "https://culture.onrunning.com",
+      link: "https://culture.on.com",
     },
   ];
 
