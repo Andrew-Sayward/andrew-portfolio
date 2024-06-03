@@ -46,27 +46,28 @@ const About = () => {
         </div>
         <div className={styles.content}>
           <p>
-            My journey into web development began in college while studying Music Technology, where I became fascinated with
-            how studio techniques could be converted into code. This curiosity led me to pursue a career in web development,
-            starting with an intensive front-end course at Just IT after I graduated.
+            I currently work as the senior front-end developer in a team creating careers websites for a variety of clients
+            in various sectors. I am responsible for the development and mentorship of a number of juniors, and have gained
+            key management skills and leadership abilities. I also handle product manager responsibilities, bridging
+            communication between the technical team and business stakeholders.
+          </p>
+
+          <p>
+            Within this role, I have honed my expertise in NextJS/React, Typescript, SCSS, and Headless CMS, while
+            maintaining strong foundational skills in HTML, CSS, and JS/ES6. Our team develops Next JS applications that
+            process API-driven data for job listings and CMS content, involving extensive conditional rendering, array
+            manipulation, and Typescript validation.
+          </p>
+
+          <p>
+            Having already had a few years experience in GSAP I am currently exploring Framer Motion and how the combination
+            of both can create complex and engaging animations to enhance UI designs by adding transitions between component
+            states and page changes.{" "}
           </p>
           <p>
-            I started my professional career at DanDan Digital, a digital marketing agency, where I was the sole developer.
-            There, I taught myself advanced skills until I needed more structured guidance, which I found at The Croc. I
-            eventually became the primary front-end developer, focusing on improving my expertise.
-          </p>
-          <p>
-            Currently, I&apos;m a Senior Front-End Developer at Wiser, where I lead a team creating career websites for
-            diverse clients. My role involves both development and mentorship, as well as taking on some project management
-            tasks. I communicate our team&apos;s needs to the business side and ensure our projects align with company goals.
-          </p>
-          <p>
-            I specialize in NextJS/React, Typescript, SCSS, and Headless CMS. Our projects often involve creating Next JS
-            applications that handle API data for job listings and CMS content, requiring detailed work with conditional
-            rendering, array manipulation, and Typescript validation. Lately, I&apos;ve been enhancing my skills in
-            JavaScript animation libraries like GSAP and Framer Motion, which allows me to integrate complex animations into
-            our UI designs. I&apos;ve also started using ChatGPT to streamline our workflows and increase our team&apos;s
-            efficiency.
+            I am currently learning NodeJS and MongoDB to start developing myself as a full-stack developer with a focus on
+            the front-end, to be able to both take on a higher number of projects/challenges and to be able to communicate
+            more clearly when working with back-end developers.
           </p>
         </div>
       </div>
