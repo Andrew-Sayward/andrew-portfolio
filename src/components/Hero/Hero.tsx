@@ -76,7 +76,7 @@ const Hero = ({ hasScrolled }: Props) => {
               <motion.h1 transition={spring} layoutId="andrew-h1">
                 Andrew Sayward
               </motion.h1>
-              <p>Senior FrontEnd Web Developer</p>
+              <p>Front End Web Developer</p>
               <div className={styles.buttons}>{renderButtons()}</div>
             </>
           )}
